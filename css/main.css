@@ -50,3 +50,31 @@ p
   margin: 0 auto;
   margin-top: 40px;
 }
+
+#warrior_bug
+{
+  width: 250px;
+  height: 165px;
+  position: relative;
+  margin-left: 55px;
+  margin-bottom: 260px;
+  float: left;
+}
+
+#gun
+{
+  width: 150px;
+  height: 90px;
+  position: relative;
+  float: right;
+}
+
+ul li
+{
+   margin-bottom: 110px;
+}
+
+ul li:last-child
+{
+   margin-bottom: 0px;
+}
