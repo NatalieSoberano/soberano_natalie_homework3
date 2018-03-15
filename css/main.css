@@ -42,31 +42,37 @@ p
   margin-bottom: 40px;
 }
 
-#gamebox
+/*#gamebox
 {
   position: relative;
   height: 150px;
   width: 200px;
   margin: 0 auto;
   margin-top: 40px;
+}*/
+
+#canvas 
+{
+  background-color: #dce5ff;
+}
+
+svg
+{
+  position: absolute;
 }
 
 #warrior_bug
 {
-  width: 250px;
-  height: 165px;
-  position: relative;
-  margin-left: 55px;
-  margin-bottom: 260px;
-  float: left;
+width: 70px;
+height: 165px;
+margin-left: 55px;
+margin-bottom: 260px;
 }
 
-#gun
+.gun
 {
-  width: 150px;
-  height: 90px;
-  position: relative;
-  float: right;
+width: 90px;
+height: 90px;
 }
 
 ul li
