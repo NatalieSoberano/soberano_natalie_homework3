@@ -42,18 +42,10 @@ p
   margin-bottom: 40px;
 }
 
-/*#gamebox
-{
-  position: relative;
-  height: 150px;
-  width: 200px;
-  margin: 0 auto;
-  margin-top: 40px;
-}*/
-
 #canvas 
 {
-  background-color: #dce5ff;
+background: url(../images/scene.jpg); 
+/*Not working */ 
 }
 
 svg
