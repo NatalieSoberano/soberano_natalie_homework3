@@ -27,7 +27,7 @@ function Draw() {
 
   //life icons
   playerLives.forEach((life, index) => {
-    ctx.drawImage(playerImg, 10 + (index*26), 10, 20, 20);
+    ctx.drawImage(playerImg, 10 + (index*36), 10, 30, 30);
   });
 
   // draw guns
@@ -58,7 +58,8 @@ function moveBug(e) {
       }
       break;
 
-      debugger;
+      //right
+        //debugger;
       case 39: 
       console.log('move bug to the right');
       if (bugPlayer.x > canvas.width) {
@@ -68,7 +69,8 @@ function moveBug(e) {
       }     
       break;
 
-      debugger;
+      //up
+        //debugger;
       case 38: 
       console.log('move bug up');
       if (bugPlayer.y > 0) {
@@ -76,15 +78,24 @@ function moveBug(e) {
       }
       break;
 
-      debugger;
+      //down
+        //debugger;
       case 40: 
       console.log('move bug down');
-      if (bugPlayer.y > 0) {
-        bugPlayer.y +=15;
-      }
+      if (bugPlayer.y > canvas.height) {
+        bugPlayer.y = 0; 
+        } else {
+           bugPlayer.y +=15;
+        }
       break;
-    }
+      }
   }
+
+//function levelUpGame {
+  //passes level 1 
+//}
+
+  
 
 window.requestAnimationFrame(Draw);
 
