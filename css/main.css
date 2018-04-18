@@ -76,3 +76,19 @@ ul li:last-child
 {
    margin-bottom: 0px;
 }
+
+.nextlevel
+{
+  opacity: 0;
+  width: 100%;
+  background-color: #000;
+}
+
+.show-next-level
+{
+  opacity: 1 !important;
+  display: block;
+  position: absolute;
+  top: 260px;
+  
+}

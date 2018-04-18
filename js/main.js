@@ -3,8 +3,14 @@
 console.log('Starship Trooper Game');
 	var canvas = document.querySelector('canvas');
     var ctx = canvas.getContext('2d');
+    var tempButton = document.querySelector('.button');
     var bug = document.querySelector('#warrior_bug');
     var guns =  [1, 2, 3];
+    var lasers = [
+      { x : 849, y : 30, x2 : 30, y2 : 30, xspeed : 13, yspeed: 12, points : 10 },
+      { x : 849, y : 30, x2 : 40, y2 : 40, xspeed : 12, yspeed: 9,  points : 5},
+      { x : 849, y : 30, x2 : 35, y2 : 35, xspeed : 15, yspeed: 8, points : 10 }
+    ]
     //grab the gun images
     var gun = document.querySelector('.gun');
 
@@ -12,8 +18,9 @@ console.log('Starship Trooper Game');
     var laserStart = 703;
     var score = 0;
     var playerLives = [1, 2, 3];
+    var TempLives = 3;
     var playerImg = document.querySelector('#livesImg');
-    //var resetScreen = document.querySelector('nextLevel');
+    var resetScreen = document.querySelector('.nextlevel');
 
     var bugPlayer = { x: 90, y: 290, width: 130, height: 70, speed: 10, lives: 3};
 
@@ -30,6 +37,20 @@ function Draw() {
     ctx.drawImage(playerImg, 10 + (index*36), 10, 30, 30);
   });
 
+  //draw lasers 
+  lasers.forEach((bullet, index) => {
+    ctx.drawImage(laser, bullet.x, 90 + (index*170), 115, 10);
+    bullet.x -= bullet.xspeed;
+    if (bullet.x < 0) {bullet.x =849}; // bullet speed 
+
+    //check for collision
+    if (bullet.y <= (bugPlayer.y + bugPlayer.height && bullet.y > bugPlayer.y)) { //(bullet.x <= (bugPlayer.x + bugPlayer.width)) 
+      console.log('hit')
+      // lasers.splice(index, 0);
+      // bugPlayer.splice();
+    }
+  });
+
   // draw guns
   guns.forEach((currentGun, index) => {
     ctx.drawImage(gun, 850, 70 + (index*170), 130, 70);
@@ -37,11 +58,12 @@ function Draw() {
 
   //draw Bug
   ctx.drawImage(bug, bugPlayer.x, bugPlayer.y, bugPlayer.width, bugPlayer.height);
+  if (bugPlayer.x > canvas.width) {score+=1};
 
-  //draw Laser
-	ctx.drawImage (laser, laserStart, 225, 150, 10);
-		laserStart-=5;
-		if (laserStart < canvas.width) {laserStart = 0}
+ //  //draw Laser
+	// ctx.drawImage (laser, laserStart, 225, 150, 10);
+	// 	laserStart-=5;
+	// 	if (laserStart < canvas.width) {laserStart = 0}
 
 		window.requestAnimationFrame(Draw);
 };
@@ -91,16 +113,21 @@ function moveBug(e) {
       }
   }
 
-//function levelUpGame {
-  //passes level 1 
-//}
-
-  
+  function removeLife () {
+    TempLives --;
+    if (TempLives ==0) {
+      console.log ('show lose screen');
+    resetScreen.classList.add('show-next-level');
+    playState = false;
+    }
+  }
 
 window.requestAnimationFrame(Draw);
 
 //move bug with keys
 window.addEventListener ('keydown', moveBug);
+tempButton.addEventListener ('click', removeLife);
+
 
 })();
 
