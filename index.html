@@ -9,32 +9,38 @@
   <link href="https://fonts.googleapis.com/css?family=Orbitron:400,700" rel="stylesheet">
   <title>Starship Troopers: Survival of the Fittest</title>
 </head>
-<body>
-  <main id="sitecontainer">
-    <h1>Starship Troopers:</h1>
-    <h1 id="subheading">Survival of the Fittest</h1>
-    <p>
-      Using the arrow keys, navigate the warrior bug to avoid the laser beams!
-    </p>
-    <canvas id="canvas" width="1000"    height="550" style="border:3px solid #000;"></canvas>
-    <div id="gunGroup" class="hidden">
-       <ul id="guns">
-        <li>
-          <img src="assets/SVGs/gun.svg" class="gun">
-        </li>
-        <li>
-          <img src="assets/SVGs/gun.svg" class="gun">
-        </li>
-        <li>
-          <img src="assets/SVGs/gun.svg" class="gun"> 
-        </li>
-      </ul>
-    </div>
-    <img src="assets/SVGs/warrior_bug.svg" id="warrior_bug" class="hidden">
-    </main>
-  <footer>
-    <img src="images/logo.png" alt="Logo" id="logo">
-  </footer>
-  <script src="js/main.js"></script>
-</body>
+  <body>
+    <main id="sitecontainer">
+
+      <h1>Starship Troopers:</h1>
+      <h1 id="subheading">Survival of the Fittest</h1>
+      <p>
+        Using the arrow keys, navigate the warrior bug to avoid the laser beams!
+      </p>
+
+      <canvas id="canvas" width="1000" height="550" style="border:3px solid #000;"></canvas>
+
+      <img src="assets/SVGs/laser.svg" id="laser" class="hidden">
+      <img src="assets/SVGs/gun.svg" class="hidden gun">
+
+      <img src="assets/SVGs/warrior_bug.svg" id="warrior_bug" class="hidden">
+      <button class="button">Lose Life</button>
+
+      <img src="images/mobileInfantry_logo.png" id="livesImg" class="hidden">
+
+     <!--  Reset Screen -->
+      <div class="nextlevel">
+        <h2 class="message">
+          <p id="playAgain">Play Again</p>
+        </h2>
+      </div>
+
+      </main>
+
+    <footer>
+      <img src="images/logo.png" alt="Logo" id="logo">
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
 </html>

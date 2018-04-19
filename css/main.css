@@ -42,18 +42,10 @@ p
   margin-bottom: 40px;
 }
 
-/*#gamebox
-{
-  position: relative;
-  height: 150px;
-  width: 200px;
-  margin: 0 auto;
-  margin-top: 40px;
-}*/
-
 #canvas 
 {
-  background-color: #dce5ff;
+background: url(../images/scene.jpg); 
+/*Not working */ 
 }
 
 svg
@@ -83,4 +75,28 @@ ul li
 ul li:last-child
 {
    margin-bottom: 0px;
+}
+
+.nextlevel
+{
+  opacity: 0;
+  width: 100%;
+  background-color: #000;
+}
+
+.show-next-level
+{
+  opacity: 0.85 !important;
+  display: block;
+  position: absolute;
+  top: 260px;
+  height: 600px;
+  margin-left: 30px;
+}
+
+#playAgain 
+{
+  text-align: center;
+  margin-top: 150px;
+  font-size: 50px;
 }
