@@ -45,7 +45,8 @@ p
 
 #canvas
 {
-background: url(../images/scene.jpg);
+background-image: url(../images/scene.jpg);
+background-repeat: repeat-y;
 /*Not working */
 }
 
@@ -105,7 +106,13 @@ ul li:last-child
   font-family: 'Orbitron', 'Helvetica', 'Arial', sans-serif;
 }
 
-button
+.button
 {
-  background-color: #dce5ff;
+  display:none;
 }
+
+#Logo
+{
+  float: right;
+}
+
