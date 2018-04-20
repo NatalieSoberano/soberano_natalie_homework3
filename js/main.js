@@ -154,6 +154,8 @@ function moveBug(e) {
 		bugPlayer.x = 90;
 		bugPlayer.y = 100;
 
+		score = 0;
+
     playState = true;
     Draw();
     resetScreen.classList.remove('show-next-level');
