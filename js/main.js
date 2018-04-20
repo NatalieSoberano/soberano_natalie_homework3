@@ -1,31 +1,27 @@
 (() => {
   //this is a fat arrow function
 console.log('Starship Trooper Game');
-	var canvas = document.querySelector('canvas');
-    var ctx = canvas.getContext('2d');
-    var tempButton = document.querySelector('.button');
-    var bug = document.querySelector('#warrior_bug');
-    var guns =  [1, 2, 3];
-    var lasers = [
-      { x : 849, y : 90, x2 : 30, y2 : 30, xspeed : 13, yspeed: 12, points : 10 },
-      { x : 849, y : 260, x2 : 40, y2 : 40, xspeed : 12, yspeed: 9,  points : 5},
-      { x : 849, y : 430, x2 : 35, y2 : 35, xspeed : 15, yspeed: 8, points : 10 }
-    ]
+	var canvas = document.querySelector('canvas'),
+      ctx = canvas.getContext('2d'),
+      tempButton = document.querySelector('.button'),
+      bug = document.querySelector('#warrior_bug'),
+      guns =  [1, 2, 3],
+      lasers = [
+        { x : 849, y : 90, x2 : 30, y2 : 30, xspeed : 13, yspeed: 12, points : 10 },
+        { x : 849, y : 260, x2 : 40, y2 : 40, xspeed : 12, yspeed: 9,  points : 5},
+        { x : 849, y : 430, x2 : 35, y2 : 35, xspeed : 15, yspeed: 8, points : 10 }
+      ],
     //grab the gun images
-    var gun = document.querySelector('.gun');
-
-    var laser = document.querySelector('#laser');
-    var laserStart = 703;
-    var score = 0;
-    var playerLives = [1, 2, 3];
-    // var TempLives = [1,2,3];
-    // var popped = playerLives.pop();
-    var playerImg = document.querySelector('#livesImg');
-    var playState = true;
-    var resetScreen = document.querySelector('.nextlevel');
-    var restartButton = document.querySelector('#playAgain');
-
-    var bugPlayer = { x: 90, y: 290, width: 130, height: 70, speed: 10, lives: 3};
+      gun = document.querySelector('.gun'),
+      laser = document.querySelector('#laser'),
+      laserStart = 703,
+      score = 0,
+      playerLives = [1, 2, 3],
+      playerImg = document.querySelector('#livesImg'),
+      playState = true,
+      resetScreen = document.querySelector('.nextlevel'),
+      restartButton = document.querySelector('#playAgain'),
+      bugPlayer = { x: 90, y: 290, width: 130, height: 70, speed: 10, lives: 3};
 
 function Draw() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height); //erasing the canvas
@@ -49,7 +45,6 @@ function Draw() {
     //check for collision
     if (bullet.x <= (bugPlayer.x + bugPlayer.width) && bullet.x > bugPlayer.x && bullet.y > bugPlayer.y && bullet.y < (bugPlayer.y + bugPlayer.height)) { //(bullet.x <= (bugPlayer.x + bugPlayer.width))
       console.log('hit')
-        playerLives.pop();
         removeLife();
       // lasers.splice(index, 0);
       // bugPlayer.splice();
@@ -65,17 +60,12 @@ function Draw() {
   ctx.drawImage(bug, bugPlayer.x, bugPlayer.y, bugPlayer.width, bugPlayer.height);
   if (bugPlayer.x > canvas.width) {score+=1};
 
- //  //draw Laser
-	// ctx.drawImage (laser, laserStart, 225, 150, 10);
-	// 	laserStart-=5;
-	// 	if (laserStart < canvas.width) {laserStart = 0}
-
   if (playState === false) {
     window.cancelAnimationFrame(Draw);
     return;
   }
 
-		window.requestAnimationFrame(Draw);
+	window.requestAnimationFrame(Draw);
 };
 
 function moveBug(e) {
@@ -127,16 +117,31 @@ function moveBug(e) {
     playState = false;
 		playerLives.pop();
 
+    // move the lasers back to the starting point
+    lasers.forEach(laser => laser.x = 850);
+    if (playerLives.length > 0) {
+      // wait almost a second, and then restart the animation
+      setTimeout(() => {
+        playState = true;
+        Draw();
+      }, 800);
+    }    
+
+    // if there are no lives left, then show the lose screen
     if (playerLives.length ==0) {
       console.log ('show lose screen');
-    resetScreen.classList.add('show-next-level');
-    bugPlayer.x = 90;
-    bugPlayer.y = 100;
+      playState = false;
+      resetScreen.classList.add('show-next-level');
     }
   }
 
-  function restartGame () {
-    playState =true;
+  function restartGame() {
+    playerLives = [1, 2, 3];
+
+    bugPlayer.x = 90;
+    bugPlayer.y = 100;
+
+    playState = true;
     Draw();
     resetScreen.classList.remove('show-next-level');
   }
